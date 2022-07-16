@@ -1,0 +1,46 @@
+.imageContent {
+    max-width: 90%;
+    margin: 5%;
+}
+
+.footer-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1% 7%;
+    width: 90%;
+    align-items: center;
+
+    .icon {
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height: 20px;
+        font-size: 25px;
+        &:hover {
+            color: $color-primary;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        img {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            transform: translate(-18px, -1px);
+        }
+        input {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            transform: translate(-16px, -3px);
+            opacity: 0;
+            cursor: pointer;
+            margin-left: -10px;
+
+            &::-webkit-file-upload-button {
+                cursor: pointer;
+            }
+        }
+    }
+}

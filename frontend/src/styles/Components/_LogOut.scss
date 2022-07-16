@@ -1,0 +1,39 @@
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    margin-left: 80%;
+    @media screen and (max-width: 700px) {
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    a,
+    .btn-logout {
+        &__icon-logout {
+            font-size: 40px;
+            padding: 5px;
+        }
+        @media screen and (max-width: 768px) {
+            padding: 5px;
+            font-size: 5px;
+        }
+        background-color: $color-secondary;
+        text-align: center;
+        transition: 0.5s;
+        color: $color-tertiary;
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px 20px 20px 20px;
+        border: transparent;
+        display: block;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-primary;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    }
+}

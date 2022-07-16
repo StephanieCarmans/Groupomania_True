@@ -1,23 +1,8 @@
-
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Connect from './pages/Connect';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
-import axios from 'axios';
-
-// Recuperation du token JWT dans le local storage
-const token = localStorage.getItem('token')
-// On utilise cette methode pour soumettre notre token a toute les routes qui en on besoin pour etre affichée
-axios.interceptors.request.use(
-  config => {
-    config.headers.authorization = `${token}`;
-    return config;
-  },
- error => {
-   return Promise.reject(error);
- }
-)
 
 function App() {
     return (
@@ -30,10 +15,5 @@ function App() {
         </div>
     );
 }
-
-
-
-
-
 
 export default App;

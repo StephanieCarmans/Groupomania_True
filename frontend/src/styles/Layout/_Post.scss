@@ -1,0 +1,20 @@
+.postContainer {
+    background-image: linear-gradient(
+        to bottom,
+        $color-primary 0%,
+        $color-secondary 45%
+    );
+}
+
+.postTitle {
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+    margin-top: 4%;
+    @media screen and(max-width: 992px) {
+        font-size: 22px;
+    }
+    @media screen and(max-width: 768px) {
+        font-size: 20px;
+    }
+}

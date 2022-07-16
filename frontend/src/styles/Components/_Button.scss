@@ -1,0 +1,39 @@
+.btn-effect {
+    border-radius: 20px;
+    margin-right: 8px;
+    font-family: 'Lato';
+    width: 100px;
+    height: 30px;
+    background-image: linear-gradient(
+        to right,
+        #5d4157 0%,
+        #a8caba 51%,
+        #5d4157 100%
+    );
+
+    &:hover {
+        color: $color-4;
+        background-position: right center; /* change the direction of the change here */
+        color: rgb(55, 8, 66);
+    }
+    @media screen and(max-width: 768px) {
+        width: 80px;
+        height: 30px;
+    }
+}
+
+.like {
+    color: #ea0000;
+    background-image: linear-gradient(
+        to right,
+        #5d4157 0%,
+        #a8caba 51%,
+        #5d4157 100%
+    );
+    font-family: 'Lato';
+    font-size: 14px;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    border-radius: 20px;
+}

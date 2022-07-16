@@ -33,8 +33,7 @@ const SignInForm = () => {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;
                 } else {
-                  navigate("/News")
-                  
+                    navigate('/News');
                 }
             })
             .catch((err) => {
@@ -44,33 +43,42 @@ const SignInForm = () => {
     };
 
     return (
-        <form action="" onSubmit={handleLogin} id="sign-up-form">
-            <label htmlFor="email">Email</label>
-            <br />
-            <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <div className="email error"></div>
-            <br />
-            <label htmlFor="password">Mot de passe</label>
-            <br />
-            <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Mot de passe"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
-            <div className="password error"></div>
-            <br />
-            <input type="submit" value="Se connecter" />
-        </form>
+        <div className="card-log __signin">
+            <form
+                className="form form-signin"
+                action=""
+                onSubmit={handleLogin}
+                id="sign-up-form"
+            >
+                <label htmlFor="email">Email</label>
+                <br />
+                <input
+                    className="inp-email"
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                />
+                <div className="email error"></div>
+                <br />
+                <label htmlFor="password">Mot de passe</label>
+                <br />
+                <input
+                    className="inp-password"
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Mot de passe"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                />
+                <div className="password error"></div>
+                <br />
+                <input className="btn-log" type="submit" value="Se connecter" />
+            </form>
+        </div>
     );
 };
 
