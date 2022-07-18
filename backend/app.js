@@ -82,6 +82,10 @@ app.use(limiter);
 //gestion des routes
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", userRoutes);
+// Logging the rejected field from multer error
+/*app.use((error, req, res, next) => {
+console.log('This is the rejected field ->', error.field);
+});*/
 
 //exportation de app
 module.exports = app;

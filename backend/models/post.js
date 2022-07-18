@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const postSchema = mongoose.Schema(
   {
     userId: { type: String, required: true },
+    //pseudo: {type: String, required: true, minLength: 3, maxLength: 55, unique: true, trim: true},
     message: { type: String, trim: true, maxLength: 500 },
     imageUrl: { type: String },
 

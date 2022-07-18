@@ -7,8 +7,7 @@ import Logout from '../components/log/LogOut';
 import Footer from '../components/footer/Footer';
 import Card from '../components/Card';
 import { BiUpload } from 'react-icons/bi';
-
-var FormData = require('form-data');
+const FormData = require('form-data');
 
 const News = () => {
     const [data, setData] = useState([]);
@@ -57,18 +56,18 @@ const News = () => {
         if (message || image) {
             const data = new FormData();
             data.append('message', e.target['message'].value);
-            data.append('image', file, file.name);
-            console.log('event', e);
-            console.log('targetIMage', e.target['file-upload'].value);
-            console.log('targetMessage', e.target['message'].value);
-            console.log(message);
-            console.log(image);
-            console.log(file);
-            data.append('file', file, file.name);
-            if (image) {
-                data.append('file', file, file.name);
-                console.log('je suis dans le if');
-            }
+            data.append('image', image);
+            // console.log('event', e);
+            // console.log('targetIMage', e.target['file-upload'].value);
+            //console.log('targetMessage', e.target['message'].value);
+            // console.log(message);
+            // console.log(image);
+            // console.log(file);
+            // data.append('file', file);
+            //if (image) {
+            //data.append('file', file);
+            //console.log('je suis dans le if');
+            //}
             console.log(image);
 
             const token = localStorage.getItem('token');
@@ -81,20 +80,22 @@ const News = () => {
                 data,
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    //'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
                 },
             };
 
             axios(config)
                 .then(function (response) {
-                    console.log(JSON.stringify(response.post));
+                    console.log('ici', response);
+                    setData([...data, response]);
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error);                    
                 });
         } else {
             alert('veuillez entrer un message');
         }
+        
     };
 
     const cancelPost = () => {
@@ -138,6 +139,7 @@ const News = () => {
                                 <BiUpload className="img" />
                                 <input
                                     type="file"
+                                    name="image"
                                     className="input-file"
                                     id="file-upload"
                                     accept=".jpg, .jpeg, .png"

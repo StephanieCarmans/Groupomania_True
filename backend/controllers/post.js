@@ -4,17 +4,22 @@ const fs = require('fs');
 
 //création des posts
 exports.createPost = (req, res, next) => {
-  const postObject = JSON.parse(req.body.post);
-  delete postObject._id;
+  console.log("reponse au", req.body);
+  //const postObject = JSON.parse(req.body.post);
+  //delete postObject._id;
+  console.log('IMAGE', req.filename);
+  console.log('body', req.body);
   const post = new Post({
-    ...postObject,
+    //...postObject,
+    ...req.body,
+    userId: req.auth.userId,
     likes: 0,
     dislikes: 0,
     usersLiked: [],
     usersDisliked: [],
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`});
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.body.imageUrl}`});
   post.save()
-    .then(() => res.status(201).json({ message: "Post enregistré !" }))
+    .then(() => res.status(201).json( post ))
     .catch((error) => res.status(400).json({ error }));
 };
 
@@ -45,7 +50,7 @@ exports.modifyPost = (req, res, next) => {
    // Mise à jour des infos suite à modification (nouvelle image + détails)
   const postObject = req.file ?
     {
-      ...JSON.parse(req.body.post),
+      ...req.body.post,
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : { ...req.body };
     Post.updateOne({ _id: req.params.id }, { ...postObject, _id: req.params.id })

@@ -23,28 +23,37 @@ const Card = ({ post }) => {
     //appel formulaire modification
     const handleEdit = () => {
         const data = {
-            pseudo: post.seudo,
+            userId: post.userId,
             message: editMessage ? editMessage : postMessage,
             date: post.createdAt,
             updatedCreatedAt: Date.now(),
         };
 
+        const token = localStorage.getItem('token');
+        localStorage.getItem('Id');
+        console.log(token);
+
+        const myHeaders = new Headers();
+        myHeaders.append('Authorization', `Bearer ${token}`);
+        myHeaders.append('Content-Type', 'multipart/form-data');
+        console.log(myHeaders);
+
         axios
-            .put('http://localhost:3003/articles/' + post.id, data)
+            .put(`http://localhost:3000/posts/${post.id}`, data, myHeaders)
             .then(() => {
                 setIsEditing(false);
             });
     };
     //appel formulaire suppression
-    const handleDelete = () => {
-        axios.delete('http://localhost:3003/articles/' + post.id);
+    /*  const handleDelete = (e) => {
+        axios.delete(`http://localhost:3000/posts/${post.id}`);
         window.location.reload();
-    };
+    };*/
 
     return (
         <div className="card-container">
             <div className="card-header">
-                <p>{post.pseudo}</p>
+                <p>{post.userId}</p>
                 <em className="post__date">
                     Posté le {dateFormater(post.createdAt)}
                 </em>
@@ -88,7 +97,7 @@ const Card = ({ post }) => {
                                     'Voulez-vous vraiment supprimer cet article ?'
                                 )
                             ) {
-                                handleDelete();
+                                //      handleDelete(post);
                             }
                         }}
                     >
